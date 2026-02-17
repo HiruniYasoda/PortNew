@@ -78,7 +78,7 @@ const Navigation: React.FC = () => {
                 
                 {/* NEON HOVER LINE */}
                 {/* Same 12px gap (-bottom-3) */}
-                <span className="absolute left-0 -bottom-3 h-[2px] w-0 neon-line transition-all duration-300 ease-in-out group-hover:w-full"></span>
+                <span className="absolute left-0 -bottom-3 h-0.5 w-0 neon-line transition-all duration-300 ease-in-out group-hover:w-full"></span>
               </a>
             ))}
           </div>
