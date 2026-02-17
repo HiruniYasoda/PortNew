@@ -10,6 +10,7 @@ import Volunteering from './Sections/Volunteering'
 import Contact from './Sections/Contact'
 import Footer from './Sections/Footer'
 import Entry from './Sections/Entry'
+import About from './Sections/About'
 
 export default function App() {
   // 2. Create state to control visibility (starts as true)
@@ -38,6 +39,7 @@ export default function App() {
         <div id="home">
           <Intro />
         </div>
+        <About />
         <Education />
         <Projects />
         <TechnicalSkills />
