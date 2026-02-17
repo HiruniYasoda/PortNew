@@ -1,1 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
+
+@theme {
+    --font-display: 'Urbanist', sans-serif;
+    
+    /* --- COLOR PALETTE --- */
+    
+    /* Backgrounds */
+    --color-bg-white: #ffffff;       /* Pure White Background */
+    --color-gray-track: #e2e8f0;     /* Light Gray for Scrollbar Track */
+    --color-text-main: #0f172a;      /* Dark Slate for readable text on white */
+    
+    /* Purples from your image */
+    --color-purple-thumb: #3A025B;   /* Russian Violet (Main Scrollbar Color) */
+    --color-purple-hover: #520380;   /* Indigo (Lighter/Brighter for Hover) */
+    --color-purple-glow: #7c3aed;    /* Bright Glow color */
+}
+
+@layer base {
+    html {
+        font-family: var(--font-display);
+        scroll-behavior: smooth;
+        /* Forced White Background */
+        background-color: var(--color-bg-white); 
+        /* Dark text for contrast against white */
+        color: var(--color-text-main); 
+    }
+
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
+        background-color: var(--color-bg-white);
+    }
+
+    /* --- SCROLLBAR STYLING --- */
+
+    ::-webkit-scrollbar {
+        width: 12px; /* Slightly wider to make the elegant purple visible */
+    }
+
+    ::-webkit-scrollbar-track {
+        /* Simple Gray Track */
+        background: var(--color-gray-track); 
+        border-radius: 0px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        /* Dark Russian Violet from Palette */
+        background-color: var(--color-purple-thumb); 
+        border-radius: 6px;
+        border: 3px solid var(--color-gray-track); /* Creates a "floating" pill effect */
+        transition: all 0.3s ease;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        /* Brighter Indigo on Hover */
+        background-color: var(--color-purple-hover);
+        /* Subtle Purple Glow */
+        box-shadow: 0 0 10px rgba(82, 3, 128, 0.5); 
+    }
+
+    /* Firefox Support */
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: var(--color-purple-thumb) var(--color-gray-track);
+    }
+}
+
+/* --- UTILITIES --- */
+@layer utilities {
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+}
