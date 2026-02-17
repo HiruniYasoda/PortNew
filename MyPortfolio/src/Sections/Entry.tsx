@@ -7,8 +7,8 @@ const Signature: React.FC = () => {
       className="relative flex items-center justify-center w-full h-screen bg-cover bg-center bg-no-repeat overflow-hidden"
       style={{ backgroundImage: "url('/image1.jpg')" }}
     >
-      {/* 1. Dark Overlay to make Neon pop */}
-      <div className="absolute inset-0 bg-black/70 z-0"></div>
+      
+      
 
       {/* 2. Load the Cursive Font */}
       <style>
