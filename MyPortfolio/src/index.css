@@ -97,3 +97,19 @@
         display: none;
     }
 }
+
+/* Neon Text Glow (White core with purple/blue aura) */
+.neon-text {
+  color: #fff;
+  text-shadow:
+    0 0 5px #fff,
+    0 0 10px #a855f7,
+    0 0 20px #a855f7,
+    0 0 40px #3b82f6;
+}
+
+/* Neon Stroke Glow for SVG icons */
+.neon-stroke {
+  stroke: #a855f7; /* Purple neon color */
+  filter: drop-shadow(0 0 2px #a855f7) drop-shadow(0 0 5px #3b82f6);
+}
