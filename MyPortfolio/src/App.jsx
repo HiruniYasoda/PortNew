@@ -19,7 +19,7 @@ export default function App() {
     // 3. Set a timer to switch off the entry screen after 3 seconds (3000ms)
     const timer = setTimeout(() => {
       setShowEntry(false);
-    }, 3000); // Change 3000 to whatever duration you want
+    }, 6000); // Change 3000 to whatever duration you want
 
     // Cleanup the timer if the component unmounts
     return () => clearTimeout(timer);

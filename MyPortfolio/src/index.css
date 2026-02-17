@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -15,6 +16,23 @@
     --color-purple-thumb: #3A025B;   /* Russian Violet (Main Scrollbar Color) */
     --color-purple-hover: #520380;   /* Indigo (Lighter/Brighter for Hover) */
     --color-purple-glow: #7c3aed;    /* Bright Glow color */
+}
+
+@keyframes neon-flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow:
+      0 0 4px #fff,
+      0 0 11px #fff,
+      0 0 19px #8b5cf6, /* Violet glow */
+      0 0 40px #8b5cf6,
+      0 0 80px #8b5cf6,
+      0 0 90px #8b5cf6;
+      opacity: 1;
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+    opacity: 0.6;
+  }
 }
 
 @layer base {
