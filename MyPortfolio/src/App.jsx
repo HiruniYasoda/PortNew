@@ -40,10 +40,9 @@ export default function App() {
           <Intro />
         </div>
         <About />
-        <Education />
-        <Projects />
         <TechnicalSkills />
-        <SoftSkills />
+         <Education />
+        <Projects />
         <Achievements />
         <Volunteering />
         <Contact />
