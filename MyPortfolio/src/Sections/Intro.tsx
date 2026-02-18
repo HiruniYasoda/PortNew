@@ -6,6 +6,13 @@ const IntroSection: React.FC = () => {
     <section id="home" className="relative min-h-screen w-full bg-black overflow-hidden flex items-center pt-20">
       
       {/* --- BACKGROUND: LARGE GEOMETRIC CIRCLES (Static & Elegant) --- */}
+
+      <motion.div 
+              className="absolute -right-[5%] -bottom-[10%] w-[300px] h-[300px] rounded-full border-[2px] border-purple-500/30 bg-transparent z-0 pointer-events-none"
+              style={{ boxShadow: "inset 0 0 30px rgba(168,85,247,0.3), 0 0 30px rgba(168,85,247,0.3)" }}
+              animate={{ scale: [1, 1.1, 1] }}
+              transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+            />
       
       {/* Circle 1: Top Left - Subtle Purple Gradient */}
       <div className="absolute -top-[20%] -left-[10%] w-[50vw] h-[50vw] rounded-full bg-purple-900/20 blur-[100px] pointer-events-none" />

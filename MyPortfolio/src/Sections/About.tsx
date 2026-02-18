@@ -1,131 +1,224 @@
 import React from 'react';
-import { motion, Variants } from 'framer-motion';
+import { motion, Variants } from 'framer-motion'; // 1. Import Variants
+import { Download, Github, Linkedin, Code, Database, BookOpen } from 'lucide-react';
 
 const AboutSection: React.FC = () => {
-  const fadeInUp: Variants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+  // 2. Add ': Variants' type here
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
   };
 
-  const roles = [
-    "Fullstack Developer",
-    "Mobile App Developer",
-    "Article Writer",
-    "AI / ML Learning Student"
-  ];
+  // 3. Add ': Variants' type here
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
 
   return (
-    <section id="about" className="relative py-24 bg-black overflow-hidden">
+    <section id="about" className="relative min-h-screen w-full bg-black overflow-hidden flex items-center py-20">
       
-      {/* --- BACKGROUND NEON BUBBLES --- */}
+      {/* --- BACKGROUND: HOLLOW NEON CIRCLES --- */}
       
-      {/* 1. Middle Left Bubble (Existing) */}
-      <motion.div
-        className="absolute left-[-10%] top-[30%] w-[400px] h-[400px] rounded-full z-0 pointer-events-none"
-        style={{
-          background: 'radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, rgba(168, 85, 247, 0) 70%)',
-          filter: 'blur(60px)',
-        }}
-        animate={{ y: [0, 40, 0], x: [0, 20, 0], scale: [1, 1.1, 1] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+      {/* 1. Large Left Hollow Circle */}
+      <motion.div 
+        className="absolute -left-[10%] top-[20%] w-[600px] h-[600px] rounded-full border-[2px] border-purple-900/30 bg-transparent z-0 pointer-events-none"
+        style={{ boxShadow: "inset 0 0 40px rgba(168,85,247,0.2), 0 0 40px rgba(168,85,247,0.2)" }}
+        animate={{ rotate: 360 }}
+        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
       />
 
-      {/* 2. Dead Middle Bubble (New) */}
-      <motion.div
-        className="absolute left-[30%] top-[40%] w-[500px] h-[500px] rounded-full z-0 pointer-events-none opacity-50"
-        style={{
-          background: 'radial-gradient(circle, rgba(168, 85, 247, 0.1) 0%, rgba(168, 85, 247, 0) 70%)',
-          filter: 'blur(80px)',
-        }}
-        animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+      {/* 2. Small Bottom Right Hollow Circle */}
+      <motion.div 
+        className="absolute -right-[5%] -bottom-[10%] w-[300px] h-[300px] rounded-full border-[2px] border-purple-500/30 bg-transparent z-0 pointer-events-none"
+        style={{ boxShadow: "inset 0 0 30px rgba(168,85,247,0.3), 0 0 30px rgba(168,85,247,0.3)" }}
+        animate={{ scale: [1, 1.1, 1] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      {/* 3. Right Top Bubble (New) */}
-      <motion.div
-        className="absolute right-[-5%] top-[-10%] w-[350px] h-[350px] rounded-full z-0 pointer-events-none"
-        style={{
-          background: 'radial-gradient(circle, rgba(168, 85, 247, 0.12) 0%, rgba(168, 85, 247, 0) 70%)',
-          filter: 'blur(50px)',
-        }}
-        animate={{ x: [0, -30, 0], y: [0, 20, 0] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-      />
-
-      {/* 4. Right Middle Bubble (New) */}
-      <motion.div
-        className="absolute right-[-10%] top-[50%] w-[450px] h-[450px] rounded-full z-0 pointer-events-none"
-        style={{
-          background: 'radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, rgba(168, 85, 247, 0) 70%)',
-          filter: 'blur(70px)',
-        }}
-        animate={{ y: [0, -50, 0], scale: [1, 0.9, 1] }}
-        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-      />
-
-      {/* --- INTENSE NEON SIDE LINES --- */}
-      <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-purple-400 shadow-[0_0_15px_#a855f7,0_0_30px_#a855f7] z-10"></div>
-      <div className="absolute right-0 top-0 bottom-0 w-[2px] bg-purple-400 shadow-[0_0_15px_#a855f7,0_0_30px_#a855f7] z-10"></div>
-
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mt-10">
         
-        {/* --- 1. SECTION HEADING --- */}
-        <motion.div
+        {/* --- LEFT SIDE: TEXT CONTENT & STATS --- */}
+        <motion.div 
+          variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
-          variants={fadeInUp}
-          className="text-center mb-12"
+          viewport={{ once: true }}
+          className="lg:pr-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white tracking-wider">
-            ABOUT ME
-          </h2>
-          <div className="w-24 h-[2px] bg-purple-100 mx-auto mt-4 rounded-full shadow-[0_0_10px_#fff,0_0_20px_#a855f7,0_0_40px_#a855f7]"></div>
+          <motion.h2 variants={itemVariants} className="text-4xl md:text-5xl font-bold text-white mb-8 leading-tight">
+            Crafting Digital <br />
+            Experiences That <span className="text-purple-400 drop-shadow-[0_0_15px_rgba(168,85,247,0.8)]">Matter</span>
+          </motion.h2>
+
+          <motion.div variants={itemVariants} className="space-y-6 text-slate-300 text-m font-light leading-relaxed mb-10 max-w-xl">
+             <motion.p whileHover={{ color: "#e2e8f0" }} transition={{ duration: 0.3 }}>
+              I'm a passionate Fullstack developer with experience building scalable, 
+              performant web applications. I specialize in creating intuitive user interfaces 
+              that combine beautiful design with exceptional functionality.
+            </motion.p>
+            <motion.p whileHover={{ color: "#e2e8f0" }} transition={{ duration: 0.3 }}>
+              My expertise spans the entire frontend ecosystem, from React and Next.js to 
+              TypeScript and modern CSS frameworks. I'm committed to writing clean, 
+              maintainable code and staying current with the latest web technologies.
+            </motion.p>
+            <motion.p whileHover={{ color: "#e2e8f0" }} transition={{ duration: 0.3 }}>
+              When I'm not coding, you'll find me contributing to open-source projects, 
+              writing technical articles, or exploring new design trends.
+            </motion.p>
+          </motion.div>
+
+          {/* STATS WITH NEON BEAMS */}
+          <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-8 md:gap-12 border-t border-purple-500/20 pt-8">
+            <div className="group">
+              <h3 className="text-3xl font-bold text-white drop-shadow-[0_0_10px_rgba(168,85,247,0.6)] group-hover:text-purple-300 transition-colors">45+</h3>
+              <p className="text-sm text-slate-400 mt-1 uppercase tracking-wider group-hover:text-slate-200 transition-colors">Happy Clients</p>
+            </div>
+            
+            <div className="w-[2px] h-12 bg-purple-500 shadow-[0_0_15px_#a855f7]" />
+            
+            <div className="group">
+              <h3 className="text-3xl font-bold text-white drop-shadow-[0_0_10px_rgba(168,85,247,0.6)] group-hover:text-purple-300 transition-colors">2.5K+</h3>
+              <p className="text-sm text-slate-400 mt-1 uppercase tracking-wider group-hover:text-slate-200 transition-colors">Code Commits</p>
+            </div>
+
+            <div className="w-[2px] h-12 bg-purple-500 shadow-[0_0_15px_#a855f7]" />
+
+            <div className="group">
+              <h3 className="text-3xl font-bold text-white drop-shadow-[0_0_10px_rgba(168,85,247,0.6)] group-hover:text-purple-300 transition-colors">500+</h3>
+              <p className="text-sm text-slate-400 mt-1 uppercase tracking-wider group-hover:text-slate-200 transition-colors">GitHub Stars</p>
+            </div>
+          </motion.div>
         </motion.div>
 
-        {/* --- 2. CENTERED IMAGE --- */}
-        <motion.div
+
+        {/* --- RIGHT SIDE: BENTO GRID GLASS CONTAINERS --- */}
+        <motion.div 
+          variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
-          variants={fadeInUp}
-          className="flex justify-center mb-12"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-4"
         >
-          <div className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-[3px] border-purple-300 shadow-[0_0_20px_#a855f7,inset_0_0_15px_#a855f7] bg-black">
-            <img 
-              src="/profile.png" 
-              alt="Hiruni Yasoda" 
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </motion.div>
-
-        {/* --- 3. BIO TEXT + NEON POINTS --- */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={fadeInUp}
-          className="max-w-3xl mx-auto text-center"
-        >
-          <p className="text-lg md:text-xl text-slate-300 leading-loose font-light mb-12">
-            Hello! I'm <span className="text-white font-medium drop-shadow-[0_0_8px_#a855f7]">Hiruni Yasoda</span>, 
-            an undergraduate at Plymouth University (NSBM) pursuing a BSc (Hons) in Software Engineering. 
-            I am driven by a deep love for problem-solving and crafting intuitive, dynamic user experiences that live on the web.
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left md:ml-24">
-            {roles.map((role, index) => (
-              <div key={index} className="flex items-center gap-5 group">
-                <span className="w-3 h-3 rounded-full bg-white shadow-[0_0_10px_#fff,0_0_20px_#a855f7] group-hover:scale-125 transition-transform duration-300"></span>
-                <span className="text-lg text-white font-light tracking-wide group-hover:text-purple-300 transition-colors duration-300">
-                  {role}
-                </span>
+          
+          {/* 1. DOWNLOAD CV */}
+          <motion.a 
+            variants={itemVariants}
+            href="/cv.pdf" 
+            download
+            className="md:col-span-2 bg-white/5 border border-purple-500/20 p-6 rounded-2xl backdrop-blur-md transition-all group cursor-pointer relative overflow-hidden"
+            whileHover={{ scale: 1.02, backgroundColor: "rgba(168, 85, 247, 0.1)", borderColor: "rgba(168, 85, 247, 0.5)" }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <div className="flex items-start justify-between relative z-10">
+              <div>
+                <h4 className="text-xl font-semibold text-white mb-1 group-hover:text-purple-300 transition-colors">Download CV</h4>
+                <p className="text-slate-400 text-sm group-hover:text-slate-300 transition-colors">Get a copy of my resume to see my full professional journey and skills.</p>
               </div>
-            ))}
-          </div>
+              <motion.div 
+                className="p-3 bg-purple-500/20 rounded-lg text-purple-400 group-hover:bg-purple-500 group-hover:text-white transition-all shadow-[0_0_15px_rgba(168,85,247,0.2)]"
+                whileHover={{ rotate: 10, scale: 1.1 }}
+              >
+                <Download size={24} />
+              </motion.div>
+            </div>
+          </motion.a>
+
+          {/* 2. GITHUB */}
+          <motion.a 
+            variants={itemVariants}
+            href="https://github.com" 
+            target="_blank"
+            className="bg-white/5 border border-purple-500/20 p-6 rounded-2xl backdrop-blur-md transition-all group cursor-pointer"
+            whileHover={{ scale: 1.03, backgroundColor: "rgba(168, 85, 247, 0.1)", borderColor: "rgba(168, 85, 247, 0.5)" }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <div className="flex flex-col h-full justify-between">
+              <motion.div 
+                className="p-3 w-fit bg-purple-500/20 rounded-lg text-purple-400 group-hover:bg-purple-500 group-hover:text-white transition-all mb-4 shadow-[0_0_15px_rgba(168,85,247,0.2)]"
+                whileHover={{ rotate: 10, scale: 1.1 }}
+              >
+                <Github size={24} />
+              </motion.div>
+              <div>
+                <h4 className="text-lg font-semibold text-white mb-1 group-hover:text-purple-300 transition-colors">GitHub</h4>
+                <p className="text-slate-400 text-xs group-hover:text-slate-300 transition-colors">Explore my open source contributions & repos.</p>
+              </div>
+            </div>
+          </motion.a>
+
+          {/* 3. LINKEDIN */}
+          <motion.a 
+            variants={itemVariants}
+            href="https://linkedin.com" 
+            target="_blank"
+            className="bg-white/5 border border-purple-500/20 p-6 rounded-2xl backdrop-blur-md transition-all group cursor-pointer"
+            whileHover={{ scale: 1.03, backgroundColor: "rgba(168, 85, 247, 0.1)", borderColor: "rgba(168, 85, 247, 0.5)" }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <div className="flex flex-col h-full justify-between">
+              <motion.div 
+                className="p-3 w-fit bg-purple-500/20 rounded-lg text-purple-400 group-hover:bg-purple-500 group-hover:text-white transition-all mb-4 shadow-[0_0_15px_rgba(168,85,247,0.2)]"
+                whileHover={{ rotate: -10, scale: 1.1 }}
+              >
+                <Linkedin size={24} />
+              </motion.div>
+              <div>
+                <h4 className="text-lg font-semibold text-white mb-1 group-hover:text-purple-300 transition-colors">LinkedIn</h4>
+                <p className="text-slate-400 text-xs group-hover:text-slate-300 transition-colors">Let's connect and expand our network.</p>
+              </div>
+            </div>
+          </motion.a>
+
+          {/* 4. PLATFORM TRIO */}
+          <motion.div variants={itemVariants} className="md:col-span-2 bg-white/5 border border-purple-500/20 rounded-2xl backdrop-blur-md flex divide-x divide-purple-500/20 overflow-hidden">
+            
+            <motion.a 
+              href="#" 
+              className="flex-1 p-4 flex flex-col items-center justify-center hover:bg-purple-900/20 transition-colors group relative"
+              whileHover={{ backgroundColor: "rgba(168, 85, 247, 0.15)" }}
+            >
+              <motion.div whileHover={{ y: -3 }}>
+                <Code className="text-slate-400 group-hover:text-purple-400 mb-2 transition-colors" size={24} />
+              </motion.div>
+              <span className="text-xs text-slate-300 group-hover:text-white transition-colors">HackerRank</span>
+            </motion.a>
+
+            <motion.a 
+              href="#" 
+              className="flex-1 p-4 flex flex-col items-center justify-center hover:bg-purple-900/20 transition-colors group relative"
+              whileHover={{ backgroundColor: "rgba(168, 85, 247, 0.15)" }}
+            >
+              <motion.div whileHover={{ y: -3 }}>
+                <Database className="text-slate-400 group-hover:text-purple-400 mb-2 transition-colors" size={24} />
+              </motion.div>
+              <span className="text-xs text-slate-300 group-hover:text-white transition-colors">Kaggle</span>
+            </motion.a>
+
+            <motion.a 
+              href="#" 
+              className="flex-1 p-4 flex flex-col items-center justify-center hover:bg-purple-900/20 transition-colors group relative"
+              whileHover={{ backgroundColor: "rgba(168, 85, 247, 0.15)" }}
+            >
+              <motion.div whileHover={{ y: -3 }}>
+                <BookOpen className="text-slate-400 group-hover:text-purple-400 mb-2 transition-colors" size={24} />
+              </motion.div>
+              <span className="text-xs text-slate-300 group-hover:text-white transition-colors">Medium</span>
+            </motion.a>
+
+          </motion.div>
 
         </motion.div>
+
       </div>
     </section>
   );
