@@ -11,6 +11,7 @@ import Contact from './Sections/Contact'
 import Footer from './Sections/Footer'
 import Entry from './Sections/Entry'
 import About from './Sections/About'
+import Services from './Sections/Services'
 
 export default function App() {
   // 2. Create state to control visibility (starts as true)
@@ -43,6 +44,7 @@ export default function App() {
         <TechnicalSkills />
          <Education />
         <Projects />
+        <Services />
         <Contact />
       </main>
       <Footer />
