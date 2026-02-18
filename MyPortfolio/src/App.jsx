@@ -43,8 +43,6 @@ export default function App() {
         <TechnicalSkills />
          <Education />
         <Projects />
-        <Achievements />
-        <Volunteering />
         <Contact />
       </main>
       <Footer />
