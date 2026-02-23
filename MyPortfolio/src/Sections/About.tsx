@@ -79,22 +79,22 @@ const AboutSection: React.FC = () => {
           {/* STATS WITH NEON BEAMS */}
           <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-8 md:gap-12 border-t border-purple-500/20 pt-8">
             <div className="group">
-              <h3 className="text-3xl font-bold text-white drop-shadow-[0_0_10px_rgba(168,85,247,0.6)] group-hover:text-purple-300 transition-colors">45+</h3>
-              <p className="text-sm text-slate-400 mt-1 uppercase tracking-wider group-hover:text-slate-200 transition-colors">Happy Clients</p>
+              <h3 className="text-3xl font-bold text-white drop-shadow-[0_0_10px_rgba(168,85,247,0.6)] group-hover:text-purple-300 transition-colors">9+</h3>
+              <p className="text-sm text-slate-400 mt-1 uppercase tracking-wider group-hover:text-slate-200 transition-colors">FULL-STACK <br></br>PROJECTS</p>
             </div>
             
             <div className="w-[2px] h-12 bg-purple-500 shadow-[0_0_15px_#a855f7]" />
             
             <div className="group">
-              <h3 className="text-3xl font-bold text-white drop-shadow-[0_0_10px_rgba(168,85,247,0.6)] group-hover:text-purple-300 transition-colors">2.5K+</h3>
-              <p className="text-sm text-slate-400 mt-1 uppercase tracking-wider group-hover:text-slate-200 transition-colors">Code Commits</p>
+              <h3 className="text-3xl font-bold text-white drop-shadow-[0_0_10px_rgba(168,85,247,0.6)] group-hover:text-purple-300 transition-colors">5+</h3>
+              <p className="text-sm text-slate-400 mt-1 uppercase tracking-wider group-hover:text-slate-200 transition-colors">TECH STACKS</p>
             </div>
 
             <div className="w-[2px] h-12 bg-purple-500 shadow-[0_0_15px_#a855f7]" />
 
             <div className="group">
-              <h3 className="text-3xl font-bold text-white drop-shadow-[0_0_10px_rgba(168,85,247,0.6)] group-hover:text-purple-300 transition-colors">500+</h3>
-              <p className="text-sm text-slate-400 mt-1 uppercase tracking-wider group-hover:text-slate-200 transition-colors">GitHub Stars</p>
+              <h3 className="text-3xl font-bold text-white drop-shadow-[0_0_10px_rgba(168,85,247,0.6)] group-hover:text-purple-300 transition-colors">100%</h3>
+              <p className="text-sm text-slate-400 mt-1 uppercase tracking-wider group-hover:text-slate-200 transition-colors">PROJECT DELIVERY</p>
             </div>
           </motion.div>
         </motion.div>
