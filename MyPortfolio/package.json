@@ -19,6 +19,9 @@
     "react-icons": "^4.10.1",
     "tailwindcss": "^4.1.18"
   },
+  "engines": {
+  "node": ">=20"
+},
   "devDependencies": {
     "@eslint/js": "^9.39.1",
     "@types/react": "^19.2.7",
