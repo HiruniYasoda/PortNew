@@ -1,9 +1,8 @@
 import React from 'react';
-import { motion, Variants } from 'framer-motion'; // 1. Import Variants
+import { motion, Variants } from 'framer-motion'; 
 import { Download, Github, Linkedin, Code, Database, BookOpen } from 'lucide-react';
 
 const AboutSection: React.FC = () => {
-  // 2. Add ': Variants' type here
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -14,7 +13,6 @@ const AboutSection: React.FC = () => {
     }
   };
 
-  // 3. Add ': Variants' type here
   const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -45,7 +43,8 @@ const AboutSection: React.FC = () => {
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      <div className="container mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mt-10">
+      {/* Main Container with updated margins to match Intro */}
+      <div className="container mx-auto px-8 md:px-20 lg:px-32 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mt-10">
         
         {/* --- LEFT SIDE: TEXT CONTENT & STATS --- */}
         <motion.div 
@@ -67,13 +66,13 @@ const AboutSection: React.FC = () => {
               that combine beautiful design with exceptional functionality.
             </motion.p>
             <motion.p whileHover={{ color: "#e2e8f0" }} transition={{ duration: 0.3 }}>
-              My expertise spans the entire frontend ecosystem, from React and Next.js to 
-              TypeScript and modern CSS frameworks. I'm committed to writing clean, 
-              maintainable code and staying current with the latest web technologies.
+             Building on my solid foundation in full-stack development, I am actively steering my career 
+             toward DevOps and Cloud engineering. I'm dedicated to mastering scalable infrastructure, 
+             automation, and modern CI/CD pipelines.
             </motion.p>
             <motion.p whileHover={{ color: "#e2e8f0" }} transition={{ duration: 0.3 }}>
-              When I'm not coding, you'll find me contributing to open-source projects, 
-              writing technical articles, or exploring new design trends.
+             Beyond writing code, I am deeply interested in the bigger picture. I spend my time exploring agile 
+             methodologies and team leadership, driven by my ambition to become a technical Project Manager.
             </motion.p>
           </motion.div>
 
@@ -107,7 +106,7 @@ const AboutSection: React.FC = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-4"
+          className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:max-w-[500px] w-full lg:ml-auto"
         >
           
           {/* 1. DOWNLOAD CV */}
@@ -136,7 +135,7 @@ const AboutSection: React.FC = () => {
           {/* 2. GITHUB */}
           <motion.a 
             variants={itemVariants}
-            href="https://github.com" 
+            href="https://github.com/HiruniYasoda?tab=overview&from=2026-02-01&to=2026-02-23" 
             target="_blank"
             className="bg-white/5 border border-purple-500/20 p-6 rounded-2xl backdrop-blur-md transition-all group cursor-pointer"
             whileHover={{ scale: 1.03, backgroundColor: "rgba(168, 85, 247, 0.1)", borderColor: "rgba(168, 85, 247, 0.5)" }}
@@ -159,7 +158,7 @@ const AboutSection: React.FC = () => {
           {/* 3. LINKEDIN */}
           <motion.a 
             variants={itemVariants}
-            href="https://linkedin.com" 
+            href="https://www.linkedin.com/in/hiruni-sethmini" 
             target="_blank"
             className="bg-white/5 border border-purple-500/20 p-6 rounded-2xl backdrop-blur-md transition-all group cursor-pointer"
             whileHover={{ scale: 1.03, backgroundColor: "rgba(168, 85, 247, 0.1)", borderColor: "rgba(168, 85, 247, 0.5)" }}
@@ -183,7 +182,8 @@ const AboutSection: React.FC = () => {
           <motion.div variants={itemVariants} className="md:col-span-2 bg-white/5 border border-purple-500/20 rounded-2xl backdrop-blur-md flex divide-x divide-purple-500/20 overflow-hidden">
             
             <motion.a 
-              href="#" 
+              href="https://www.hackerrank.com/profile/hirunisethmini" 
+              target='_blank'
               className="flex-1 p-4 flex flex-col items-center justify-center hover:bg-purple-900/20 transition-colors group relative"
               whileHover={{ backgroundColor: "rgba(168, 85, 247, 0.15)" }}
             >
@@ -191,10 +191,13 @@ const AboutSection: React.FC = () => {
                 <Code className="text-slate-400 group-hover:text-purple-400 mb-2 transition-colors" size={24} />
               </motion.div>
               <span className="text-xs text-slate-300 group-hover:text-white transition-colors">HackerRank</span>
+               
             </motion.a>
 
             <motion.a 
-              href="#" 
+            href="https://www.kaggle.com/hirunisethmini" 
+              target='_blank'
+              
               className="flex-1 p-4 flex flex-col items-center justify-center hover:bg-purple-900/20 transition-colors group relative"
               whileHover={{ backgroundColor: "rgba(168, 85, 247, 0.15)" }}
             >
@@ -205,7 +208,8 @@ const AboutSection: React.FC = () => {
             </motion.a>
 
             <motion.a 
-              href="#" 
+              href="https://medium.com/@hirunisethmini" 
+              target='_blank'
               className="flex-1 p-4 flex flex-col items-center justify-center hover:bg-purple-900/20 transition-colors group relative"
               whileHover={{ backgroundColor: "rgba(168, 85, 247, 0.15)" }}
             >

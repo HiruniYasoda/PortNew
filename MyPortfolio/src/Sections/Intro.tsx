@@ -3,16 +3,15 @@ import { motion } from 'framer-motion';
 
 const IntroSection: React.FC = () => {
   return (
-    <section id="home" className="relative min-h-screen w-full bg-black overflow-hidden flex items-center pt-20">
+    <section id="home" className="relative min-h-screen w-full bg-black overflow-hidden flex items-center pt-40">
       
       {/* --- BACKGROUND: LARGE GEOMETRIC CIRCLES (Static & Elegant) --- */}
-
       <motion.div 
-              className="absolute -right-[5%] -bottom-[10%] w-[300px] h-[300px] rounded-full border-[2px] border-purple-500/30 bg-transparent z-0 pointer-events-none"
-              style={{ boxShadow: "inset 0 0 30px rgba(168,85,247,0.3), 0 0 30px rgba(168,85,247,0.3)" }}
-              animate={{ scale: [1, 1.1, 1] }}
-              transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-            />
+        className="absolute -right-[5%] -bottom-[10%] w-[300px] h-[300px] rounded-full border-[2px] border-purple-500/30 bg-transparent z-0 pointer-events-none"
+        style={{ boxShadow: "inset 0 0 30px rgba(168,85,247,0.3), 0 0 30px rgba(168,85,247,0.3)" }}
+        animate={{ scale: [1, 1.1, 1] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+      />
       
       {/* Circle 1: Top Left - Subtle Purple Gradient */}
       <div className="absolute -top-[20%] -left-[10%] w-[50vw] h-[50vw] rounded-full bg-purple-900/20 blur-[100px] pointer-events-none" />
@@ -21,7 +20,7 @@ const IntroSection: React.FC = () => {
       <div className="absolute top-[40%] -right-[10%] w-[40vw] h-[40vw] rounded-full bg-purple-800/10 blur-[120px] pointer-events-none" />
 
       {/* --- MAIN CONTENT --- */}
-      <div className="container mx-auto px-6 relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center h-full">
+      <div className="container mx-auto px-8 md:px-20 lg:px-32 relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center h-full">
         
         {/* --- LEFT SIDE: TEXT CONTAINER --- */}
         <motion.div 
@@ -41,11 +40,11 @@ const IntroSection: React.FC = () => {
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-950/40 border border-purple-400/40 text-purple-300 text-sm font-medium mb-8 shadow-[0_0_15px_rgba(168,85,247,0.15)]"
           >
             <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse shadow-[0_0_10px_#a855f7]" />
-            Fullstack Developer & UI/UX Enthusiast
+            Full-Stack Developer | AI & ML Enthusiast | Cloud & DevOps
           </motion.div>
 
           <h1 className="text-4xl md:text-7xl font-bold text-white mb-6 leading-[1.1] tracking-tight">
-            Hello, I am <br />
+            Hi there, I am <br />
             <span className="text-white drop-shadow-[0_0_20px_rgba(168,85,247,0.8)]">
               Hiruni Yasoda
             </span>
@@ -66,7 +65,7 @@ const IntroSection: React.FC = () => {
             </div>
             <div className="w-[1px] h-10 bg-purple-500/20" />
             <div className="flex flex-col">
-              <span className="text-2xl font-bold text-white drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]">3+</span>
+              <span className="text-2xl font-bold text-white drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]">9+</span>
               <span className="text-xs text-slate-400 uppercase tracking-widest">Projects</span>
             </div>
             <div className="w-[1px] h-10 bg-purple-500/20" />
@@ -86,7 +85,6 @@ const IntroSection: React.FC = () => {
         >
           
           {/* --- "GET IN TOUCH" BUTTON --- */}
-          {/* Position pulled inwards: md:right-4 md:-top-12 */}
           <motion.a 
             href="#contact"
             className="absolute top-0 right-0 md:right-4 md:-top-12 px-8 py-3 rounded-full bg-black/40 border border-purple-500/60 text-white font-medium backdrop-blur-md z-50 cursor-pointer"
