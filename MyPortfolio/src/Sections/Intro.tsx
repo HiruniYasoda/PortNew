@@ -117,7 +117,7 @@ const IntroSection: React.FC = () => {
             {/* INNER PROFILE CIRCLE */}
             <div className="relative w-[58%] h-[58%] rounded-full overflow-hidden border-[4px] border-purple-500/40 shadow-[0_0_60px_rgba(168,85,247,0.3)] z-10 bg-black">
               <img 
-                src="/profile.png" 
+                src="/Pro.jpg" 
                 alt="Hiruni Yasoda" 
                 className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700"
               />
