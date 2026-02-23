@@ -44,7 +44,7 @@ export default function App() {
         <TechnicalSkills />
          <Education />
         <Projects />
-        <Services />
+        
         <Contact />
       </main>
       <Footer />
