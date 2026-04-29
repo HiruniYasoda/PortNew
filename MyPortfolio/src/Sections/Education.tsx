@@ -34,7 +34,7 @@ const educationData = [
   },
   {
     id: 5,
-    title: "B.Sc(Hons) Computing & Information Systems", // Updated Title
+    title: "B.Sc(Hons) Computing & Information Systems", 
     subtitle: "2024 - Present",
     points: ["Faculty of Computing", "Sabaragamuwa University"]
   }
@@ -52,7 +52,7 @@ const otherQualifications = [
     title: "Dhamma School Final Examination",
     subtitle: "Successfully Completed - 2019",
     points: [],
-    icon: Scroll // Using Scroll icon for certificate/exam
+    icon: Scroll 
   }
 ];
 
@@ -119,9 +119,8 @@ const GlassCard: React.FC<{
 
 // --- SNAKE TIMELINE COMPONENT (DESKTOP) ---
 const SnakeTimeline: React.FC = () => {
-  // SVG Coordinates Configuration for Tighter Gap
   const TOP_Y = 150;
-  const GAP = 160; // Reduced gap
+  const GAP = 160; 
   const BOTTOM_Y = TOP_Y + GAP; 
   
   return (
@@ -131,9 +130,9 @@ const SnakeTimeline: React.FC = () => {
       <svg className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible">
         <defs>
           <linearGradient id="purpleGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#7e22ce" />   {/* purple-700 */}
-            <stop offset="50%" stopColor="#d946ef" />  {/* fuchsia-500 */}
-            <stop offset="100%" stopColor="#a855f7" /> {/* purple-500 */}
+            <stop offset="0%" stopColor="#7e22ce" /> 
+            <stop offset="50%" stopColor="#d946ef" /> 
+            <stop offset="100%" stopColor="#a855f7" /> 
           </linearGradient>
           <filter id="neonGlow">
             <feGaussianBlur stdDeviation="5" result="coloredBlur" />
@@ -144,13 +143,6 @@ const SnakeTimeline: React.FC = () => {
           </filter>
         </defs>
 
-        {/* Path Logic:
-            Tighter curve and reduced vertical distance.
-            M 100 150 -> L 950 150 (Top Line)
-            Q 1050 150, 1050 230 (Curve Start) -> Q 1050 310, 950 310 (Curve End) -> NO, simplify to one arc
-            Using cubic bezier or double quadratic for U-turn.
-            Let's use: Line to 950. Curve to (1050, 230 - midpoint). Curve to (950, 310).
-        */}
         <motion.path
           d={`M 100 ${TOP_Y} L 950 ${TOP_Y} Q 1050 ${TOP_Y} 1050 ${TOP_Y + (GAP/2)} Q 1050 ${BOTTOM_Y} 950 ${BOTTOM_Y} L 500 ${BOTTOM_Y}`}
           fill="none"
@@ -180,33 +172,26 @@ const SnakeTimeline: React.FC = () => {
       </svg>
 
       {/* --- CONTENT PLACEMENT --- */}
-      {/* Cards positioned relative to the SVG lines (150px and 310px) */}
-      
-      {/* 1. Senior Secondary (Left Top) */}
       <div className="absolute left-[10%] top-[150px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
         <NeonDot />
         <GlassCard {...educationData[0]} className="absolute bottom-8 w-[280px]" />
       </div>
 
-      {/* 2. Collegiate (Middle Top) */}
       <div className="absolute left-[45%] top-[150px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
         <NeonDot />
         <GlassCard {...educationData[1]} className="absolute bottom-8 w-[280px]" />
       </div>
 
-      {/* 3. Dip English (Right Top) */}
       <div className="absolute right-[10%] top-[150px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
         <NeonDot />
         <GlassCard {...educationData[2]} className="absolute bottom-8 w-[280px]" />
       </div>
 
-      {/* 4. Dip IT (Right Bottom - Under Dip English) */}
       <div className="absolute right-[10%] top-[310px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
         <NeonDot />
         <GlassCard {...educationData[3]} className="absolute top-8 w-[280px]" />
       </div>
 
-      {/* 5. BSc (Middle Bottom - Under Collegiate) */}
       <div className="absolute left-[45%] top-[310px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
         <NeonDot />
         <GlassCard {...educationData[4]} className="absolute top-8 w-[280px]" />
@@ -280,7 +265,7 @@ const HighlightsSection: React.FC = () => {
         transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
       />
 
-      {/* BACKGROUND: PULSATING CIRCLE (Bottom Right) - NEW */}
+      {/* BACKGROUND: PULSATING CIRCLE (Bottom Right) */}
       <motion.div 
         className="absolute -right-[5%] -bottom-[10%] w-[300px] h-[300px] rounded-full border-[2px] border-purple-500/30 bg-transparent z-0 pointer-events-none"
         style={{ boxShadow: "inset 0 0 30px rgba(168,85,247,0.3), 0 0 30px rgba(168,85,247,0.3)" }}
@@ -304,30 +289,31 @@ const HighlightsSection: React.FC = () => {
           </p>
         </div>
 
-        {/* TABS */}
-        <div className="flex justify-center mb-8">
-          <div className="relative flex flex-wrap justify-center bg-slate-900/50 p-1 rounded-full border border-purple-500/30 backdrop-blur-md shadow-[0_0_20px_rgba(168,85,247,0.1)]">
-            <motion.div
-              className="absolute top-1 bottom-1 rounded-full bg-purple-600 shadow-[0_0_20px_#a855f7]"
-              layout
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              style={{
-                left: activeTab === 'education' ? '4px' : activeTab === 'achievements' ? '33%' : '66%',
-                width: '33%',
-                opacity: 0.8
-              }}
-            />
-            {['Education', 'Achievements', 'Volunteering'].map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab.toLowerCase() as any)}
-                className={`relative z-10 px-6 md:px-10 py-3 rounded-full text-sm md:text-base font-semibold transition-colors duration-300 ${
-                  activeTab === tab.toLowerCase() ? 'text-white' : 'text-slate-400 hover:text-white'
-                }`}
-              >
-                {tab}
-              </button>
-            ))}
+        {/* TABS - FIXED RESPONSIVE LAYOUT */}
+        <div className="flex justify-center mb-8 w-full">
+          <div className="relative flex bg-slate-900/50 p-1 rounded-full border border-purple-500/30 backdrop-blur-md shadow-[0_0_20px_rgba(168,85,247,0.1)] w-full max-w-lg">
+            {['Education', 'Achievements', 'Volunteering'].map((tab) => {
+              const isActive = activeTab === tab.toLowerCase();
+              return (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab.toLowerCase() as any)}
+                  className={`relative flex-1 px-2 sm:px-4 md:px-8 py-3 rounded-full text-[11px] sm:text-sm md:text-base font-semibold transition-colors duration-300 whitespace-nowrap ${
+                    isActive ? 'text-white' : 'text-slate-400 hover:text-white'
+                  }`}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="active-tab-indicator"
+                      className="absolute inset-0 rounded-full bg-purple-600 shadow-[0_0_20px_#a855f7]"
+                      style={{ opacity: 0.8 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                    />
+                  )}
+                  <span className="relative z-10">{tab}</span>
+                </button>
+              );
+            })}
           </div>
         </div>
 
