@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Music, BookOpen, Scroll } from 'lucide-react'; // Icons for "Other" section
+import { Music, BookOpen, Scroll } from 'lucide-react'; 
 import Volunteering from './Volunteering';
 import Achievements from './Achievements';
 
@@ -58,7 +58,6 @@ const otherQualifications = [
 
 // --- COMPONENTS ---
 
-// 1. NEON DOT (On the Line)
 const NeonDot: React.FC = () => (
   <motion.div 
     initial={{ scale: 0 }}
@@ -68,7 +67,6 @@ const NeonDot: React.FC = () => (
   />
 );
 
-// 2. GLASS CARD (General)
 const GlassCard: React.FC<{ 
   title: string; 
   subtitle: string; 
@@ -116,8 +114,6 @@ const GlassCard: React.FC<{
   );
 };
 
-
-// --- SNAKE TIMELINE COMPONENT (DESKTOP) ---
 const SnakeTimeline: React.FC = () => {
   const TOP_Y = 150;
   const GAP = 160; 
@@ -125,8 +121,6 @@ const SnakeTimeline: React.FC = () => {
   
   return (
     <div className="relative w-full max-w-6xl h-[500px] hidden md:block mt-12 mb-8">
-      
-      {/* --- SVG DRAWING ANIMATION --- */}
       <svg className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-visible">
         <defs>
           <linearGradient id="purpleGradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -156,7 +150,6 @@ const SnakeTimeline: React.FC = () => {
           transition={{ duration: 3, ease: "easeInOut" }}
         />
         
-        {/* Arrow Head */}
         <motion.path
           d={`M 520 ${BOTTOM_Y - 15} L 490 ${BOTTOM_Y} L 520 ${BOTTOM_Y + 15}`}
           fill="none"
@@ -171,7 +164,6 @@ const SnakeTimeline: React.FC = () => {
         />
       </svg>
 
-      {/* --- CONTENT PLACEMENT --- */}
       <div className="absolute left-[10%] top-[150px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
         <NeonDot />
         <GlassCard {...educationData[0]} className="absolute bottom-8 w-[280px]" />
@@ -196,12 +188,10 @@ const SnakeTimeline: React.FC = () => {
         <NeonDot />
         <GlassCard {...educationData[4]} className="absolute top-8 w-[280px]" />
       </div>
-
     </div>
   );
 };
 
-// --- VERTICAL TIMELINE (MOBILE) ---
 const VerticalTimeline: React.FC = () => {
   return (
     <div className="relative flex flex-col gap-12 md:hidden mt-8 pl-8 border-l-2 border-purple-500/30">
@@ -222,7 +212,6 @@ const VerticalTimeline: React.FC = () => {
   );
 };
 
-// --- OTHER QUALIFICATIONS COMPONENT ---
 const OtherQualifications: React.FC = () => {
   return (
     <div className="w-full max-w-5xl mx-auto mt-12 md:mt-4">
@@ -249,10 +238,11 @@ const OtherQualifications: React.FC = () => {
   );
 };
 
-
 // --- MAIN SECTION ---
 const HighlightsSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'education' | 'achievements' | 'volunteering'>('education');
+
+  const tabs = ['Education', 'Achievements', 'Volunteering'];
 
   return (
     <section id="highlights" className="relative min-h-screen w-full bg-black overflow-hidden py-24 flex flex-col items-center">
@@ -289,28 +279,28 @@ const HighlightsSection: React.FC = () => {
           </p>
         </div>
 
-        {/* TABS - FIXED RESPONSIVE LAYOUT */}
-        <div className="flex justify-center mb-8 w-full">
-          <div className="relative flex bg-slate-900/50 p-1 rounded-full border border-purple-500/30 backdrop-blur-md shadow-[0_0_20px_rgba(168,85,247,0.1)] w-full max-w-lg">
-            {['Education', 'Achievements', 'Volunteering'].map((tab) => {
+        {/* TABS - NOW MATCHING PROJECTS SECTION LOGIC EXACTLY */}
+        <div className="flex justify-center mb-16">
+          <div className="relative flex flex-wrap justify-center bg-slate-900/50 p-1.5 rounded-full border border-purple-500/30 backdrop-blur-md shadow-[0_0_20px_rgba(168,85,247,0.1)]">
+            {tabs.map((tab) => {
               const isActive = activeTab === tab.toLowerCase();
               return (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab.toLowerCase() as any)}
-                  className={`relative flex-1 px-2 sm:px-4 md:px-8 py-3 rounded-full text-[11px] sm:text-sm md:text-base font-semibold transition-colors duration-300 whitespace-nowrap ${
+                  className={`relative px-5 md:px-8 py-2.5 rounded-full text-sm md:text-base font-semibold transition-colors duration-300 z-10 ${
                     isActive ? 'text-white' : 'text-slate-400 hover:text-white'
                   }`}
                 >
+                  {/* Framer Motion Sliding Pill with -z-10 to stay behind text */}
                   {isActive && (
                     <motion.div
-                      layoutId="active-tab-indicator"
-                      className="absolute inset-0 rounded-full bg-purple-600 shadow-[0_0_20px_#a855f7]"
-                      style={{ opacity: 0.8 }}
-                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                      layoutId="activeHighlightTab"
+                      className="absolute inset-0 bg-purple-600 rounded-full shadow-[0_0_15px_#a855f7] -z-10"
+                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
                     />
                   )}
-                  <span className="relative z-10">{tab}</span>
+                  {tab}
                 </button>
               );
             })}
