@@ -275,7 +275,7 @@ const HighlightsSection: React.FC = () => {
             My <span className="text-purple-400 drop-shadow-[0_0_15px_rgba(168,85,247,0.8)]">Highlights</span>
           </motion.h2>
           <p className="text-slate-400 text-lg max-w-2xl mx-auto font-light">
-            A journey through my academic milestones, recognized achievements, and contributions to the community.
+            A journey through my academic milestones, recognized achievements, and contributions to the community..
           </p>
         </div>
 
