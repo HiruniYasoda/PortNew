@@ -129,12 +129,42 @@ const CircularSkill: React.FC<CircularSkillProps> = ({ label, level, icon: Icon,
   );
 };
 
+import { SoftSkillItem } from '../Components/Admin/SkillsEditModal';
+import { Sparkles } from 'lucide-react';
+
+const getSoftSkillIcon = (label: string) => {
+  const lower = label.toLowerCase();
+  if (lower.includes('problem') || lower.includes('think') || lower.includes('brain')) return Brain;
+  if (lower.includes('team') || lower.includes('collab') || lower.includes('group')) return Users;
+  if (lower.includes('creat') || lower.includes('idea') || lower.includes('inno')) return Lightbulb;
+  if (lower.includes('comm') || lower.includes('speak') || lower.includes('talk')) return MessageSquare;
+  if (lower.includes('lead') || lower.includes('manag')) return Crown;
+  return Sparkles;
+};
+
+interface SoftSkillsProps {
+  description?: string;
+  skills?: SoftSkillItem[];
+}
+
 // --- MAIN COMPONENT ---
-const SoftSkills: React.FC = () => {
+const SoftSkills: React.FC<SoftSkillsProps> = ({ description, skills }) => {
+  const activeSkills = skills && skills.length > 0
+    ? skills
+    : [
+        { id: '1', label: 'Problem Solving', level: 90 },
+        { id: '2', label: 'Teamwork', level: 85 },
+        { id: '3', label: 'Creativity', level: 95 },
+        { id: '4', label: 'Communication', level: 80 },
+        { id: '5', label: 'Leadership', level: 85 },
+      ];
+
+  const activeDescription = description || 'Essential abilities that drive successful collaboration, leadership, and efficient project delivery in dynamic environments.';
+
   return (
     <div className="w-full max-w-6xl mx-auto px-4 mt-8">
       {/* Intro Text for Soft Skills */}
-      <motion.div 
+      <motion.div
         className="text-center mb-16"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -144,19 +174,19 @@ const SoftSkills: React.FC = () => {
           Interpersonal Skills
         </h3>
         <p className="text-slate-400 max-w-2xl mx-auto leading-relaxed">
-          Essential abilities that drive successful collaboration, leadership, and efficient project delivery in dynamic environments.
+          {activeDescription}
         </p>
       </motion.div>
 
       {/* Skills Grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-12 gap-x-8 place-items-center">
-        {softSkills.map((skill, index) => (
+        {activeSkills.map((skill, index) => (
           <CircularSkill
-            key={index}
+            key={skill.id || index}
             index={index}
             label={skill.label}
             level={skill.level}
-            icon={skill.icon}
+            icon={getSoftSkillIcon(skill.label)}
           />
         ))}
       </div>
