@@ -138,7 +138,7 @@ const SkillsSection: React.FC = () => {
         transition={{ duration: 120, repeat: Infinity, ease: "linear" }}
       />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-6 max-w-7xl relative z-10">
         
         {/* --- SECTION HEADER --- */}
         <div className="text-center mb-16">

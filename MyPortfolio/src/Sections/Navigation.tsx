@@ -58,7 +58,7 @@ const Navigation: React.FC = () => {
           scrolled ? 'bg-black/90 backdrop-blur-md py-4 shadow-lg shadow-purple-900/20' : 'bg-black py-6'
         }`}
       >
-        <div className="container mx-auto px-6 relative flex items-center justify-between">
+        <div className="container mx-auto px-6 max-w-7xl relative flex items-center justify-between">
           
           {/* LEFT: LOGO (Neon) */}
           <a href="#home" className="text-3xl font-bold tracking-tighter neon-text transition-transform hover:scale-105">

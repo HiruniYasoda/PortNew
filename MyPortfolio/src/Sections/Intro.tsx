@@ -20,7 +20,7 @@ const IntroSection: React.FC = () => {
       <div className="absolute top-[40%] -right-[10%] w-[40vw] h-[40vw] rounded-full bg-purple-800/10 blur-[120px] pointer-events-none" />
 
       {/* --- MAIN CONTENT --- */}
-      <div className="container mx-auto px-8 md:px-20 lg:px-32 relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center h-full">
+      <div className="container mx-auto px-6 max-w-7xl relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center h-full">
         
         {/* --- LEFT SIDE: TEXT CONTAINER --- */}
         <motion.div 

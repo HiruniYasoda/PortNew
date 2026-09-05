@@ -44,7 +44,7 @@ const AboutSection: React.FC = () => {
       />
 
       {/* Main Container with updated margins to match Intro */}
-      <div className="container mx-auto px-8 md:px-20 lg:px-32 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mt-10">
+      <div className="container mx-auto px-6 max-w-7xl relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mt-10">
         
         {/* --- LEFT SIDE: TEXT CONTENT & STATS --- */}
         <motion.div 
