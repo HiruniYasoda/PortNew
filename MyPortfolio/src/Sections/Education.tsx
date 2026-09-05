@@ -370,16 +370,18 @@ const HighlightsSection: React.FC = () => {
 
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         {/* HEADER WITH ADMIN PENCIL BUTTON */}
-        <div className="relative text-center mb-12">
+        <div className="flex flex-col items-center justify-center text-center mb-12 relative">
           {isAdmin && activeTab === 'education' && (
-            <button
-              onClick={() => setIsEditModalOpen(true)}
-              className="absolute top-0 right-0 z-30 px-4 py-2 rounded-xl bg-purple-600 border border-purple-400/50 text-white shadow-[0_0_20px_rgba(168,85,247,0.7)] hover:scale-105 hover:bg-purple-500 transition-all flex items-center gap-1.5 text-xs font-bold"
-              title="Edit Education & Qualifications"
-            >
-              <Pencil size={14} />
-              <span>Edit Education</span>
-            </button>
+            <div className="mb-4 flex justify-center">
+              <button
+                onClick={() => setIsEditModalOpen(true)}
+                className="px-4 py-2 rounded-xl bg-purple-600 border border-purple-400/50 text-white shadow-[0_0_20px_rgba(168,85,247,0.7)] hover:scale-105 hover:bg-purple-500 transition-all flex items-center gap-1.5 text-xs font-bold z-30"
+                title="Edit Education & Qualifications"
+              >
+                <Pencil size={14} />
+                <span>Edit Education</span>
+              </button>
+            </div>
           )}
 
           <motion.h2

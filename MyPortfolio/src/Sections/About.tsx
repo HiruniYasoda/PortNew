@@ -74,7 +74,6 @@ const AboutSection: React.FC = () => {
     localStorage.setItem('portfolio_about_boxes', JSON.stringify(updatedBoxes));
   };
 
-  // Font Size Resolver
   const getFontSizeClass = (size?: string) => {
     switch (size) {
       case 'sm':
@@ -89,12 +88,10 @@ const AboutSection: React.FC = () => {
     }
   };
 
-  // Helper for paragraphs list
   const activeParagraphs = aboutText.paragraphs && aboutText.paragraphs.length > 0
     ? aboutText.paragraphs
     : [aboutText.paragraph1, aboutText.paragraph2, aboutText.paragraph3].filter(Boolean) as string[];
 
-  // Helper for stats list
   const activeStats = aboutText.stats && aboutText.stats.length > 0
     ? aboutText.stats
     : [
@@ -103,7 +100,6 @@ const AboutSection: React.FC = () => {
         { value: aboutText.stat3Value || '100%', label: aboutText.stat3Label || 'PROJECT DELIVERY' },
       ];
 
-  // Helper for platform cards
   const activePlatforms: PlatformCardItem[] = aboutBoxes.platforms && aboutBoxes.platforms.length > 0
     ? aboutBoxes.platforms
     : [
@@ -174,7 +170,6 @@ const AboutSection: React.FC = () => {
 
       {/* Main Container */}
       <div className="container mx-auto px-6 max-w-7xl relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mt-10">
-        
         {/* --- LEFT SIDE: TEXT CONTENT & STATS --- */}
         <motion.div
           variants={containerVariants}
@@ -183,27 +178,29 @@ const AboutSection: React.FC = () => {
           viewport={{ once: true }}
           className="relative lg:pr-12 bg-black/40 p-6 md:p-8 rounded-3xl border border-purple-500/20 backdrop-blur-sm"
         >
-          {/* Admin Edit Text Pencil Button (Clean top-right placement) */}
-          {isAdmin && (
-            <button
-              onClick={() => setIsTextModalOpen(true)}
-              className="absolute top-4 right-4 z-30 px-3.5 py-1.5 rounded-xl bg-purple-600 border border-purple-400/50 text-white shadow-[0_0_20px_rgba(168,85,247,0.7)] hover:scale-105 hover:bg-purple-500 transition-all flex items-center gap-1.5 text-xs font-bold"
-              title="Edit About Text Content"
-            >
-              <Pencil size={13} />
-              <span>Edit Text</span>
-            </button>
-          )}
+          {/* Top Header Row for About Text & Admin Edit Button */}
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-8">
+            <motion.h2 variants={itemVariants} className="text-3xl md:text-5xl font-bold text-white leading-tight">
+              {aboutText.heading.includes('Matter') ? (
+                <>
+                  {aboutText.heading.replace('Matter', '').trim()} <span className="text-purple-400 drop-shadow-[0_0_15px_rgba(168,85,247,0.8)]">Matter</span>
+                </>
+              ) : (
+                aboutText.heading
+              )}
+            </motion.h2>
 
-          <motion.h2 variants={itemVariants} className="text-4xl md:text-5xl font-bold text-white mb-8 leading-tight pr-24">
-            {aboutText.heading.includes('Matter') ? (
-              <>
-                {aboutText.heading.replace('Matter', '').trim()} <span className="text-purple-400 drop-shadow-[0_0_15px_rgba(168,85,247,0.8)]">Matter</span>
-              </>
-            ) : (
-              aboutText.heading
+            {isAdmin && (
+              <button
+                onClick={() => setIsTextModalOpen(true)}
+                className="self-start sm:self-auto shrink-0 px-3.5 py-1.5 rounded-xl bg-purple-600 border border-purple-400/50 text-white shadow-[0_0_20px_rgba(168,85,247,0.7)] hover:scale-105 hover:bg-purple-500 transition-all flex items-center gap-1.5 text-xs font-bold z-30"
+                title="Edit About Text Content"
+              >
+                <Pencil size={13} />
+                <span>Edit Text</span>
+              </button>
             )}
-          </motion.h2>
+          </div>
 
           <motion.div variants={itemVariants} className={`space-y-6 text-slate-300 font-light leading-relaxed mb-10 max-w-xl ${getFontSizeClass(aboutText.fontSize)}`}>
             {activeParagraphs.map((para, idx) => (
@@ -245,16 +242,18 @@ const AboutSection: React.FC = () => {
           viewport={{ once: true }}
           className="relative grid grid-cols-1 md:grid-cols-2 gap-4 lg:max-w-[500px] w-full lg:ml-auto bg-black/40 p-4 md:p-6 rounded-3xl border border-purple-500/20 backdrop-blur-sm"
         >
-          {/* Admin Edit Links & CV Pencil Button (Clean top-right placement) */}
+          {/* Admin Edit Links & CV Pencil Button Header Bar */}
           {isAdmin && (
-            <button
-              onClick={() => setIsBoxesModalOpen(true)}
-              className="absolute -top-4 right-4 z-30 px-3.5 py-1.5 rounded-xl bg-purple-600 border border-purple-400/50 text-white shadow-[0_0_20px_rgba(168,85,247,0.7)] hover:scale-105 hover:bg-purple-500 transition-all flex items-center gap-1.5 text-xs font-bold"
-              title="Edit Links & Upload CV"
-            >
-              <Pencil size={13} />
-              <span>Edit Links & CV</span>
-            </button>
+            <div className="md:col-span-2 flex justify-end mb-2">
+              <button
+                onClick={() => setIsBoxesModalOpen(true)}
+                className="px-3.5 py-1.5 rounded-xl bg-purple-600 border border-purple-400/50 text-white shadow-[0_0_20px_rgba(168,85,247,0.7)] hover:scale-105 hover:bg-purple-500 transition-all flex items-center gap-1.5 text-xs font-bold z-30"
+                title="Edit Links & Upload CV"
+              >
+                <Pencil size={13} />
+                <span>Edit Links & CV</span>
+              </button>
+            </div>
           )}
 
           {/* 1. DOWNLOAD CV */}
