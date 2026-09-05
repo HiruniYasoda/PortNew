@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0518" />
+      <stop offset="100%" stop-color="#1a0b2e" />
+    </linearGradient>
+    <linearGradient id="neonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a855f7" />
+      <stop offset="50%" stop-color="#d946ef" />
+      <stop offset="100%" stop-color="#e879f9" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background Circle -->
+  <circle cx="256" cy="256" r="240" fill="url(#bgGrad)" stroke="url(#neonGrad)" stroke-width="14" filter="url(#glow)" />
+  
+  <!-- Glowing Inner Ring -->
+  <circle cx="256" cy="256" r="215" fill="none" stroke="#a855f7" stroke-width="3" stroke-dasharray="10 8" opacity="0.6" />
+
+  <!-- Stylized "H" Logo Monogram -->
+  <path d="M 170 140 L 170 372 M 342 140 L 342 372 M 170 256 L 342 256" 
+        stroke="url(#neonGrad)" 
+        stroke-width="36" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" 
+        filter="url(#glow)" />
+</svg>
