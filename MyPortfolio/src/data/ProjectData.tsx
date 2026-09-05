@@ -13,6 +13,12 @@ export interface Project {
   innovativeness: string;
   problems: string;
   learned: string;
+  tagline?: string;
+  description?: string;
+  technologies?: string[];
+  liveUrl?: string;
+  githubUrl?: string;
+  keyFeatures?: string[];
 }
 
 export const getEmbedUrl = (url?: string) => {

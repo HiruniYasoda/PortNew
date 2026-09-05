@@ -10,7 +10,7 @@ interface ProjectEditModalProps {
   defaultCategory?: Category;
   onClose: () => void;
   onSave: (project: Project) => void;
-  onDelete?: (id: number) => void;
+  onDelete?: (id: string) => void;
 }
 
 export const ProjectEditModal: React.FC<ProjectEditModalProps> = ({
@@ -36,11 +36,11 @@ export const ProjectEditModal: React.FC<ProjectEditModalProps> = ({
       setTitle(projectToEdit.title || '');
       setTagline(projectToEdit.tagline || '');
       setCategory(projectToEdit.category || defaultCategory);
-      setDescription(projectToEdit.description || '');
+      setDescription(projectToEdit.description || projectToEdit.concept || '');
       setImage(projectToEdit.image || '');
       setTechnologies(projectToEdit.technologies || []);
-      setLiveUrl(projectToEdit.liveUrl || '');
-      setGithubUrl(projectToEdit.githubUrl || '');
+      setLiveUrl(projectToEdit.liveUrl || projectToEdit.demo || '');
+      setGithubUrl(projectToEdit.githubUrl || projectToEdit.github || '');
     } else {
       // Blank for new item
       setTitle('');
@@ -68,15 +68,22 @@ export const ProjectEditModal: React.FC<ProjectEditModalProps> = ({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const updatedProject: Project = {
-      id: projectToEdit ? projectToEdit.id : Date.now(),
+      id: projectToEdit ? projectToEdit.id : String(Date.now()),
       title,
       tagline,
       category,
       description,
+      shortDesc: tagline || description.slice(0, 100) || title,
+      concept: description || tagline || title,
+      innovativeness: projectToEdit?.innovativeness || 'Modern responsive application',
+      problems: projectToEdit?.problems || 'Optimized user workflow',
+      learned: projectToEdit?.learned || 'Full-stack architecture & design patterns',
       image: image || '/projects/placeholder.png',
       technologies,
       liveUrl,
       githubUrl,
+      github: githubUrl,
+      demo: liveUrl,
       keyFeatures: projectToEdit?.keyFeatures || ['Responsive Modern Interface', 'Secure API Integration'],
     };
 
