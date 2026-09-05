@@ -12,6 +12,8 @@ import Footer from './Sections/Footer'
 import Entry from './Sections/Entry'
 import About from './Sections/About'
 import Services from './Sections/Services'
+import { AdminProvider } from './Context/AdminContext'
+import { AdminAuthModal } from './Components/AdminAuthModal'
 
 export default function App() {
   // 2. Create state to control visibility (starts as true)
@@ -34,20 +36,23 @@ export default function App() {
 
   // 5. Otherwise, render your main App structure
   return (
-    <div className="min-h-screen">
-      <Navigation />
-      <main>
-        <div id="home">
-          <Intro />
-        </div>
-        <About />
-        <TechnicalSkills />
-         <Education />
-        <Projects />
-        
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <AdminProvider>
+      <div className="min-h-screen">
+        <Navigation />
+        <main>
+          <div id="home">
+            <Intro />
+          </div>
+          <About />
+          <TechnicalSkills />
+          <Education />
+          <Projects />
+          
+          <Contact />
+        </main>
+        <Footer />
+        <AdminAuthModal />
+      </div>
+    </AdminProvider>
   )
 }

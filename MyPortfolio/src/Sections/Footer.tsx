@@ -1,8 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Instagram, Facebook, Mail, Heart } from 'lucide-react';
+import { Github, Linkedin, Instagram, Facebook, Mail, Heart, Lock, ShieldCheck } from 'lucide-react';
+import { useAdmin } from '../Context/AdminContext';
 
 const Footer: React.FC = () => {
+  const { openLoginModal, isAdmin } = useAdmin();
   const currentYear = new Date().getFullYear(); // Will show 2026
 
   // Smooth scroll handler for Quick Links
@@ -97,10 +99,24 @@ const Footer: React.FC = () => {
           <p className="text-slate-500 text-sm font-light text-center md:text-left">
             &copy; {currentYear} All Rights Reserved by <span className="text-purple-400 font-medium">hirunisethmini@gmail.com</span>
           </p>
-          
-          <p className="text-slate-500 text-sm font-light flex items-center gap-1">
-            Built with <Heart size={14} className="text-purple-500 fill-purple-500 animate-pulse" /> by Hiruni
-          </p>
+
+          <div className="flex items-center gap-4">
+            <button
+              onClick={openLoginModal}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all border ${
+                isAdmin 
+                  ? 'bg-green-500/20 border-green-500/50 text-green-300 shadow-[0_0_10px_rgba(34,197,94,0.3)]' 
+                  : 'bg-purple-500/10 border-purple-500/30 text-purple-300 hover:bg-purple-500 hover:text-white shadow-[0_0_10px_rgba(168,85,247,0.2)]'
+              }`}
+            >
+              {isAdmin ? <ShieldCheck size={14} /> : <Lock size={14} />}
+              <span>{isAdmin ? 'Admin Active ✏️' : 'Admin Login'}</span>
+            </button>
+
+            <p className="text-slate-500 text-sm font-light flex items-center gap-1">
+              Built with <Heart size={14} className="text-purple-500 fill-purple-500 animate-pulse" /> by Hiruni
+            </p>
+          </div>
         </div>
 
       </div>

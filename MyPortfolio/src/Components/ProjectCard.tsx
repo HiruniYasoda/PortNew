@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Github, ExternalLink, Play } from 'lucide-react';
+import { Github, ExternalLink, Play, Pencil } from 'lucide-react';
 import { Project, getEmbedUrl } from '../data/ProjectData';
+import { useAdmin } from '../Context/AdminContext';
 
 interface ProjectCardProps {
   project: Project;
   onExplore: () => void;
+  onEdit?: () => void;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project, onExplore }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ project, onExplore, onEdit }) => {
+  const { isAdmin } = useAdmin();
   const [isPlaying, setIsPlaying] = useState(false);
   const embedUrl = getEmbedUrl(project.demo);
   const isYoutube = embedUrl?.includes('youtube.com/embed');
@@ -24,8 +27,21 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onExplore }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       whileHover={{ y: -5 }}
-      className="flex flex-col h-full bg-transparent border border-purple-500/50 rounded-2xl overflow-hidden shadow-[0_0_15px_rgba(168,85,247,0.1)] hover:shadow-[0_0_25px_rgba(168,85,247,0.3)] hover:border-purple-400 transition-all group"
+      className="relative flex flex-col h-full bg-transparent border border-purple-500/50 rounded-2xl overflow-hidden shadow-[0_0_15px_rgba(168,85,247,0.1)] hover:shadow-[0_0_25px_rgba(168,85,247,0.3)] hover:border-purple-400 transition-all group"
     >
+      {/* Floating Pencil Edit Button for Admin */}
+      {isAdmin && onEdit && (
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            onEdit();
+          }}
+          title="Edit Project"
+          className="absolute top-3 right-3 z-30 p-2.5 rounded-full bg-purple-600/90 text-white border border-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.8)] hover:scale-110 hover:bg-purple-500 transition-all"
+        >
+          <Pencil size={16} />
+        </button>
+      )}
       {/* MEDIA CONTAINER */}
       <div className="relative w-full aspect-video border-b border-purple-500/30 overflow-hidden bg-black/80 flex items-center justify-center">
         {isPlaying && isYoutube ? (
