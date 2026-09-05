@@ -74,7 +74,7 @@ const AchievementCard: React.FC<AchievementCardProps> = ({
           }}
         >
            <img 
-             src={`/${image}`} 
+             src={image.startsWith('data:') || image.startsWith('http') || image.startsWith('/') ? image : `/${image}`} 
              alt={title} 
              className="w-full h-full object-cover" 
              onError={(e) => {
