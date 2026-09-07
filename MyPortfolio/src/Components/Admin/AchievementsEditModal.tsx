@@ -254,7 +254,7 @@ export const AchievementsEditModal: React.FC<AchievementsEditModalProps> = ({
                       <ImageIcon size={13} /> Achievement Badge / Image Logo
                     </label>
                     <ImageDropzone
-                      currentImage={item.image}
+                      currentImageUrl={item.image}
                       onImageSelected={(imageDataUrl) => updateAchievementField(idx, 'image', imageDataUrl)}
                     />
                   </div>
